@@ -1,3 +1,5 @@
+//add getAllAvailableTables function to get the available tables
+
 const restaurant = (db) => {
 let availableTables
 let bookedTables
@@ -6,6 +8,7 @@ let userTables
     async function getTables() {
         // get all the available tables
         availableTables = await db.getAvailableTables()
+        // returns all the available 
         return availableTables
     }
 

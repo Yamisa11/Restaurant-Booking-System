@@ -21,7 +21,7 @@ export default function BookingsDBLogic(database){
     }
 
     async function cancel(tableName){
-        await database.none('UPDATE table_booking SET booked = false WHERE table_name = $1',[tableName])
+        await database.none("UPDATE table_booking SET booked = false, username = 'sisi' WHERE table_name = $1",[tableName])
     }
     async function getUserDetails(theUser){
         let result = await database.any('SELECT * FROM table_booking WHERE username = $1', [theUser])

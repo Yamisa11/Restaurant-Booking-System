@@ -1,3 +1,4 @@
+//create connection string and connect it using pg-promise
 import pgPromise from "pg-promise"
 import dotenv from 'dotenv';
 
