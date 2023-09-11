@@ -3,8 +3,20 @@ import pgp from "pg-promise";
 import exphbs from "express-handlebars";
 import bodyParser from "body-parser";
 import flash from "flash-express";
+import BookingsDBLogic from "./database/databaseLogic.js";
+import DBJS from "./database.js"
+import BookingFunction from "./services/restaurant.js"
 
 const app = express()
+let database = BookingsDBLogic(DBJS)
+let bookingFunction = BookingFunction(database) 
+let availableBook
+let tableId
+let numberOfPeople
+let inputUserName
+let phonenumber
+let allTheBookings
+
 
 app.use(express.static('public'));
 app.use(flash());
@@ -21,14 +33,29 @@ const handlebarSetup = exphbs.engine({
 app.engine('handlebars', handlebarSetup);
 app.set('view engine', 'handlebars');
 
-app.get("/", (req, res) => {
+app.get("/",  async (req, res) => {
 
-    res.render('index', { tables : [{}, {}, {booked : true}, {}, {}, {}]})
+    availableBook = await bookingFunction.getTables()
+    res.render('index', { tables : availableBook,
+        theError: await bookingFunction.error(tableId,numberOfPeople)})
 });
 
+app.post("/book", async (req,res) => {
+    tableId = req.body.tableId
+    numberOfPeople = req.body.booking_size
+    inputUserName = req.body.username
+    phonenumber = req.body.phone_number
 
-app.get("/bookings", (req, res) => {
-    res.render('bookings', { tables : [{}, {}, {}, {}, {}, {}]})
+ await bookingFunction.bookATable(inputUserName,numberOfPeople,phonenumber,tableId)
+ 
+
+    res.redirect("/")
+})
+
+app.get("/bookings", async(req, res) => {
+    allTheBookings = await bookingFunction.getBookedTables()
+
+    res.render('bookings', { bookedTables : allTheBookings})
 });
 
 

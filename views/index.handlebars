@@ -5,8 +5,8 @@
     <div class="notification is-danger is-light">
         {{!-- you can remove the button below if you want --}}
         <button class="delete"></button>
-        Error Flash messages goes here...
-        <a href="https://bulma.io/documentation/elements/notification/">Read here if you wanna change the style</a>
+        <span>{{theError}}</span>
+       
     </div>
     <div class="notification is-success is-light">
         {{!-- you can remove the button below if you want --}}
@@ -23,7 +23,7 @@
         <div class="column">
             <div class="panel">
                 <p class="panel-heading">
-                    Table XYZ
+                   {{table_name}}
                 </p>
                 <div class="panel-block">
                     <div class="field is-horizontal">
@@ -42,7 +42,7 @@
                         <div class="field-body">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input is-static" type="email" value="5" readonly>
+                                   {{capacity}}
                                 </p>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                         <img src="./images/reserved.png" width="60">
                         {{else}}
                         <label class="radio">
-                            <input type="radio" name="tableId" id="tableId">
+                            <input type="radio" name="tableId" id="tableId" value="{{id}}">
                             Book this table
                         </label>
                         {{/if}}
