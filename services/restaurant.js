@@ -11,9 +11,9 @@ let userTables
 
     async function bookATable(theUser,peopleNumber,contact,tableId) {
 
-    if (error(tableId,peopleNumber) == "") {
+    // if (error(tableId,peopleNumber) == "") {
         await db.bookTable(theUser,peopleNumber,contact,tableId)
-    }
+    // }
      
     }
 
@@ -52,11 +52,18 @@ let userTables
     const element = theTable[i];
     if (element.capacity < peopleNumber) {
         errorMsg = "Number of people exceed capacity"
+    }else{
+        errorMsg = ""
     }
    
    }
    return errorMsg
 
+    }
+
+    async function success(){
+        let successMsg = "Reservation was successfully cancelled"
+        return successMsg
     }
 
     return {
@@ -66,7 +73,8 @@ let userTables
         isTableBooked,
         cancelTableBooking,
         getBookedTablesForUser,
-        error
+        error,
+        success
     }
 }
 

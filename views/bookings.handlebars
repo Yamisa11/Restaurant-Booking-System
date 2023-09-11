@@ -39,7 +39,9 @@
         <td>{{username}}</td>
         <td>{{contact_number}}</td>
         <td>
-            <button class="button is-warning" >Cancel booking</button>
+            <form action="cancel/{{table_name}}" method="POST">
+                <button type="submit" class="button is-warning" >Cancel booking</button>
+            </form>
         </td>
         <td> 
             <a href="/bookings/{{username}}">view bookings</a>
