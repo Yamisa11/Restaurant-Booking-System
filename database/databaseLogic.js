@@ -1,4 +1,9 @@
-
+// create getAvailableTable to add query to select all the tables with column booked=false
+// create bookTable function update the existing details to that of the oesron making the booking and setting the booked to true
+// create get booked tabkes to get all the booked tables from the table
+// create getUserDetails to select all the booked tables of user
+// create cancel function to update the booked column to be false so that the table now becomes not booked and shows under not booked
+//return all the functions and eexport them as a module
 
 export default function BookingsDBLogic(database){
 
