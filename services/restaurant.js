@@ -2,6 +2,7 @@ const restaurant = (db) => {
 let availableTables
 let bookedTables
 let theTable
+let userTables
     async function getTables() {
         // get all the available tables
         availableTables = await db.getAvailableTables()
@@ -40,7 +41,8 @@ let theTable
 
     async function getBookedTablesForUser(username) {
         // get user table booking
-       
+       userTables = await db.getUserDetails(username)
+       return userTables
     }
 
    async function error(tableId,peopleNumber){

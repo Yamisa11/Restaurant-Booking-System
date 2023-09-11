@@ -3,7 +3,7 @@ import RestaurantTableBooking from "../services/restaurant.js";
 import pgPromise from 'pg-promise';
 
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://coder:coder123@localhost:5432/registrations';
+const connectionString = process.env.DATABASE_URL || 'postgresql://coder:coder123@localhost:5432/table_booking';
 const db = pgPromise()(connectionString);
 
 describe("The restaurant booking table", function () {

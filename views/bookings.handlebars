@@ -29,6 +29,7 @@
         <th>Booked by</th>
         <th>Contact number</th>
         <th></th>
+        <th></th>
     </tr>
     {{#each bookedTables}}
       <tr>
@@ -39,6 +40,9 @@
         <td>{{contact_number}}</td>
         <td>
             <button class="button is-warning" >Cancel booking</button>
+        </td>
+        <td> 
+            <a href="/bookings/{{username}}">view bookings</a>
         </td>
     </tr>
     {{/each}}

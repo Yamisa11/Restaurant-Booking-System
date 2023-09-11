@@ -1,0 +1,12 @@
+<div class="userBookings">
+    <h1>Booking details for:  <span>{{theUser}}</span></h1>
+
+    {{#each theDetails}}
+    <div class="disp" style="border: 1px solid;">
+        <p>{{table_name}}</p>
+        <P>{{capacity}}</P>
+        <p>{{username}}</p>
+        <p>{{contact_number}}</p>
+    </div>
+    {{/each}}
+</div>

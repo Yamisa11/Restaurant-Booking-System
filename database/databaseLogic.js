@@ -23,11 +23,16 @@ export default function BookingsDBLogic(database){
     async function cancel(tableName){
         await database.any('DELETE FROM table_booking WHERE table_name = $1',[tableName])
     }
+    async function getUserDetails(theUser){
+        let result = await database.any('SELECT * FROM table_booking WHERE username = $1', [theUser])
+        return result
+    }
     return{
         getAvailableTables,
         bookTable,
         getBookedTables,
         cancel,
-        getTableById
+        getTableById,
+        getUserDetails
     }
 }

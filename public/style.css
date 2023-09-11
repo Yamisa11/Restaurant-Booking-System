@@ -6,6 +6,9 @@ body {
     /* background-color: #ff7d00; */
     /* color: #15616d; */
 }
+.disp{
+    border: 1px solid;
+}
 
 .tables {
     display: flex;

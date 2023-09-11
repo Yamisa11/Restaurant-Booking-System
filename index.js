@@ -58,6 +58,16 @@ app.get("/bookings", async(req, res) => {
     res.render('bookings', { bookedTables : allTheBookings})
 });
 
+app.get("/bookings/:username",async (req,res) => {
+    let username = req.params.username
+    let details = await bookingFunction.getBookedTablesForUser(username)
+
+    res.render("userBookings", {
+        theUser : username,
+        theDetails : details
+    })
+})
+
 
 var portNumber = process.env.PORT || 3000;
 
